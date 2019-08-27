@@ -1,7 +1,7 @@
-@extends('master')
+@extends('layouts.app')
 
 @section('content')
-@if ($errors->any())
+	@if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -10,17 +10,28 @@
         </ul>
     </div>
 @endif
-<div class="container">
-	<div class="row">
-		<div class="col-md-8">
-			
-	<form action="{{url('/categories/store')}}" method="POST" >
-		@csrf
-		<label>Name</label>
-		<input type="text" name="name" value="" class="form-control">
-		<button type="submit" class="btn btn-primary">Add</button>
-	</form>		
+	<div class="card card-default">
+		
+		<div class="card-header">
+			Add Categories
 		</div>
+		<div class="card-body">
+			<form action="{{url('/categories/store')}}" method="POST" >
+		@csrf
+		<div class="form-group">
+			<label>Name</label>
+			<input type="text" name="name" value="" class="form-control">
+			
+		</div>
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary">Add</button>
+			
+		</div>
+		</form>		
+	
+		</div>
+	
 	</div>
+	
 
-</div>
+@endsection
